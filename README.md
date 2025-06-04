@@ -51,39 +51,7 @@ This framework leverages tools from **information geometry**, **probabilistic in
 
 ## 📦 Repository Structure
 
-```
-pedestrian-dynamics-igvif-aeets/
-│
-├── config/
-│   └── config.yaml
-│
-├── src/
-│   ├── train.py
-│   ├── inference.py
-│   ├── data_loader.py
-│   └── model/
-│       ├── igvif.py
-│       ├── aeets.py
-│       ├── social_force.py
-│       └── utils.py
-│
-├── evaluation/
-│   └── metrics.py
-│
-├── experiments/
-│   ├── checkpoints/
-│   ├── results/
-│   └── logs/
-│
-├── scripts/
-│   ├── run_train.py
-│   ├── run_eval.py
-│   └── prepare_data.py
-│
-├── requirements.txt
-├── LICENSE
-└── README.md
-```
+├── config/ # Configuration files (YAML) ├── src/ # Core model and training code │ ├── data_loader.py │ ├── train.py │ ├── inference.py │ └── model/ │ ├── igvif.py │ ├── aeets.py │ ├── social_force.py │ └── utils.py ├── evaluation/ # Evaluation metrics (ADE, FDE, etc.) │ └── metrics.py ├── experiments/ # Logs, model checkpoints, predictions │ ├── logs/ │ ├── results/ │ └── checkpoints/ ├── scripts/ # Automation scripts │ ├── run_train.py │ ├── run_eval.py │ └── prepare_data.py └── requirements.txt # Dependency list
 
 ---
 
