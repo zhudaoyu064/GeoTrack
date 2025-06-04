@@ -1,0 +1,68 @@
+# ======================
+# General Configuration
+# ======================
+project_name: pedestrian-dynamics-igvif-aeets
+random_seed: 42
+device: cuda  # or "cpu"
+
+# ===============
+# Dataset Options
+# ===============
+dataset:
+  name: ETH-UCY
+  root_dir: ./datasets/
+  sequence_length: 8
+  prediction_horizon: 12
+  batch_size: 32
+  num_workers: 4
+  shuffle: true
+
+# ======================
+# IGVIF Model Parameters
+# ======================
+igvif:
+  latent_dim: 64
+  encoder_type: "gru"
+  decoder_type: "gru"
+  use_multiscale: true
+  riemannian_optimizer: true
+  learning_rate: 0.0005
+  weight_decay: 0.0001
+  info_geometry_metric: "Fisher-Rao"
+
+# ======================
+# AEETS Module Settings
+# ======================
+aeets:
+  exploration_rate: 0.3         # Initial exploration weight
+  entropy_threshold: 0.05       # Used to switch between exploration and exploitation
+  feedback_decay: 0.9           # How quickly the system adapts
+  adaptive_schedule: "linear"   # linear | exponential | custom
+
+# ======================
+# Training Parameters
+# ======================
+training:
+  epochs: 100
+  save_every: 10
+  log_interval: 50
+  checkpoint_dir: ./experiments/checkpoints/
+  resume_from: null  # path to checkpoint to resume from
+
+# ======================
+# Evaluation Parameters
+# ======================
+evaluation:
+  metrics: ["ADE", "FDE", "collision_rate"]
+  visualize_results: true
+  save_predictions: true
+  output_dir: ./experiments/results/
+
+# ======================
+# Logging
+# ======================
+logging:
+  log_dir: ./experiments/logs/
+  use_wandb: false
+  wandb_project: pedestrian-dynamics
+  wandb_entity: your_username
